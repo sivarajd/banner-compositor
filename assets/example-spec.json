@@ -1,0 +1,18 @@
+{
+  "canvas": { "width": 1920, "height": 384, "background": "#000000" },
+  "feather": 50,
+  "tiles": [
+    { "src": "assets/subject-a-still.jpg", "x": 0, "width": 745, "focus": [0.3, 0.2] },
+    { "src": "assets/subject-b-still.jpg", "x": 695, "width": 715, "scale": 0.42, "crop_x": 300, "crop_y": 0 },
+    { "src": "assets/subject-c-poster.jpg", "x": 1360, "width": 560, "src_crop": [0, 28, 614, 421] }
+  ],
+  "overlays": [
+    { "src": "assets/subject-a-logo.png", "x": 420, "y": 130, "width": 290 },
+    {
+      "src": "assets/subject-b-logo-cutout.png", "x": 1120, "y": 110, "width": 235,
+      "backing": { "color": "#161c1f", "close": 3, "grow": 1.5, "soften": 1.2 },
+      "shadow": { "color": "#000000", "blur": 7, "opacity": 0.55, "dx": 4, "dy": 6 }
+    }
+  ],
+  "output": ["banner-draft.png", "banner-draft.jpg"]
+}
