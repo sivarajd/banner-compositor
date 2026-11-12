@@ -1,0 +1,10 @@
+{
+  "name": "banner-compositor",
+  "version": "0.1.0",
+  "description": "Build wide community banners by compositing real stills and logos with Pillow. Nothing is generated or redrawn.",
+  "author": { "name": "Sivaraj D" },
+  "homepage": "https://github.com/sivarajd/banner-compositor",
+  "repository": "https://github.com/sivarajd/banner-compositor",
+  "license": "MIT",
+  "keywords": ["banner", "image", "compositing", "subreddit", "agent-skill"]
+}

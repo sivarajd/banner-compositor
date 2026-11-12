@@ -1,0 +1,16 @@
+{
+  "name": "sivarajd-skills",
+  "owner": {
+    "name": "Sivaraj D"
+  },
+  "plugins": [
+    {
+      "name": "banner-compositor",
+      "source": "./",
+      "description": "Build wide community banners by compositing real stills and logos with Pillow. Nothing is generated or redrawn."
+    }
+  ],
+  "metadata": {
+    "description": "Agent skills by Sivaraj D."
+  }
+}

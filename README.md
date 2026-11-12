@@ -10,9 +10,25 @@ right: they re-letter title logos, and they redraw real people's faces.
 
 ## Install
 
-The skill is a folder. Put it where your agent looks for skills.
+Pick the one that matches how you use Claude. The scripts need Python 3.9 or later and
+Pillow (`pip install pillow`) whichever way you install.
 
-For Claude Code:
+### Claude Code: as a plugin (recommended)
+
+```bash
+claude plugin marketplace add sivarajd/banner-compositor
+claude plugin install banner-compositor@sivarajd-skills
+```
+
+On Claude Code 2.1.275 or later, one step also works:
+
+```
+/plugin install banner-compositor --marketplace sivarajd/banner-compositor
+```
+
+Update later with `claude plugin update banner-compositor@sivarajd-skills`.
+
+### Claude Code: as a plain skill folder
 
 ```bash
 # for every project on this machine
@@ -22,13 +38,33 @@ git clone https://github.com/sivarajd/banner-compositor.git ~/.claude/skills/ban
 git clone https://github.com/sivarajd/banner-compositor.git <project>/.claude/skills/banner-compositor
 ```
 
-The scripts need Python 3.9 or later and Pillow:
+Start a new session after installing so the skill is picked up.
+
+### Other agents: npx skills
 
 ```bash
-pip install pillow
+npx skills add sivarajd/banner-compositor
 ```
 
-Start a new session after installing so the skill is picked up.
+This uses the open [`skills`](https://github.com/vercel-labs/skills) installer, which needs
+Node.js. Not tested by the author for this repository; if it does not find the skill, use
+the clone method above.
+
+### Claude.ai and Claude Desktop: upload a ZIP
+
+Download `banner-compositor.zip` from the latest
+[release](https://github.com/sivarajd/banner-compositor/releases), then go to
+Customize > Skills > "+" > Upload a skill. The ZIP must have the `banner-compositor`
+folder at its top level, not `SKILL.md` loose at the root. Code execution has to be
+enabled for scripts to run. To build the ZIP yourself, from the folder that contains
+this repository's folder:
+
+```bash
+zip -r banner-compositor.zip banner-compositor -x 'banner-compositor/.git/*' \
+    'banner-compositor/__pycache__/*' 'banner-compositor/*/__pycache__/*'
+```
+
+Uploaded skills do not sync between claude.ai, the API and Claude Code.
 
 ## Invoke
 
@@ -119,6 +155,7 @@ and `assets/example-spec.json` is a starting point.
 | Path | Contents |
 |---|---|
 | `SKILL.md` | The workflow the agent follows. |
+| `.claude-plugin/` | Plugin and marketplace manifests, so the repo installs with `claude plugin install`. |
 | `scripts/compose_banner.py` | Builds a banner from a JSON layout. Stops on gaps, empty bands and missing files. |
 | `scripts/cutout_logo.py` | Keys a logo out of key art, or defringes a transparent logo. |
 | `scripts/contact_sheet.py` | Tiles candidate images into one labelled sheet. |
